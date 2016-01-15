@@ -36,7 +36,7 @@
 package java.util.concurrent.atomic;
 import java.util.function.IntUnaryOperator;
 import java.util.function.IntBinaryOperator;
-import sun.misc.Unsafe;
+import sun.misc.Unsafe; 	//Unsafe类提供了硬件级别的原子操作，这个类都是native方法，具体实现使用c++
 
 /**
  * An {@code int} value that may be updated atomically.  See the
@@ -51,12 +51,12 @@ import sun.misc.Unsafe;
  * @since 1.5
  * @author Doug Lea
 */
-public class AtomicInteger extends Number implements java.io.Serializable {
+public class AtomicInteger extends Number implements java.io.Serializable {  //一个提供原子操作的Integer的类,基于CAS乐观锁实现
     private static final long serialVersionUID = 6214790243416807050L;
 
     // setup to use Unsafe.compareAndSwapInt for updates
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-    private static final long valueOffset;
+    private static final Unsafe unsafe = Unsafe.getUnsafe();	//Unsafe是一个单例的类，所有的原子操作都是基于这个类的底层方法实现的
+    private static final long valueOffset;	//代表CAS操作中原来的值的内存地址（CAS:Compare and Swap）
 
     static {
         try {
@@ -182,7 +182,7 @@ public class AtomicInteger extends Number implements java.io.Serializable {
      *
      * @return the updated value
      */
-    public final int incrementAndGet() {
+    public final int incrementAndGet() {   //类似于i++操作
         return unsafe.getAndAddInt(this, valueOffset, 1) + 1;
     }
 

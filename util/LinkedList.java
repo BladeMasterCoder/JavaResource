@@ -103,7 +103,7 @@ public class LinkedList<E>
     /**
      * Constructs an empty list.
      */
-    public LinkedList() {
+    public LinkedList() {        //空的构造函数
     }
 
     /**
@@ -114,7 +114,7 @@ public class LinkedList<E>
      * @param  c the collection whose elements are to be placed into this list
      * @throws NullPointerException if the specified collection is null
      */
-    public LinkedList(Collection<? extends E> c) {
+    public LinkedList(Collection<? extends E> c) {	//另一个collection作为参数构造LindedList的构造函数
         this();
         addAll(c);
     }
@@ -238,10 +238,10 @@ public class LinkedList<E>
      * @return the first element in this list
      * @throws NoSuchElementException if this list is empty
      */
-    public E getFirst() {
+    public E getFirst() {	//返回链表中的第一个节点的数据
         final Node<E> f = first;
         if (f == null)
-            throw new NoSuchElementException();
+            throw new NoSuchElementException(); 	//若为空，抛出NoSuchElementException异常
         return f.item;
     }
 
@@ -251,7 +251,7 @@ public class LinkedList<E>
      * @return the last element in this list
      * @throws NoSuchElementException if this list is empty
      */
-    public E getLast() {
+    public E getLast() {	//返回链表中的最后一个节点的数据
         final Node<E> l = last;
         if (l == null)
             throw new NoSuchElementException();
@@ -967,10 +967,10 @@ public class LinkedList<E>
         }
     }
 
-    private static class Node<E> {
-        E item;
-        Node<E> next;
-        Node<E> prev;
+    private static class Node<E> {   //内部静态类，代表链表中的节点
+        E item;	//存储的数据
+        Node<E> next;    	//后一个节点
+        Node<E> prev;	//前一个节点
 
         Node(Node<E> prev, E element, Node<E> next) {
             this.item = element;
